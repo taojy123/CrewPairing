@@ -2,7 +2,6 @@ import csv
 import calendar
 
 class Virgin:
-    @staticmethod
     def reader (a) :
         jancok = []
         read = []
@@ -237,8 +236,6 @@ class Virgin:
         jancok.insert(0,["Status", "Block Number", "Base", "Date", "Plane Type","Stays With Plane", "Flight Number", "Departure City", "Departure Time", "Arrival City", "Arrival Time"])
 
         return (jancok,locked)
-
-    @staticmethod
     def aospreader(aosp_file="JanuaryAOSPgs0002.rpt"):
         #fh = open("JanuaryAOSPgs0002.rpt", "r")
         fh = open(aosp_file, "r")
@@ -308,8 +305,6 @@ class Virgin:
             new.append(paths)
             final.append(new)
         return final
-
-    @staticmethod
     def numGet(number):
         number = number.strip()
         if len(number) > 1 and number[0] == '0':
@@ -319,13 +314,11 @@ class Virgin:
             if num == '':
                 num = '0'
         return int(num)
-    @staticmethod
     def timeGet(time):
         hours = Virgin.numGet(time[:-3])
         mins = Virgin.numGet(time[-2:])
         totalmins = hours+mins
         return totalmins
-    @staticmethod
     def timeChanger(time, airport):
         PST = ["SEA", "PDX","SFO","LAS","SJC","LAX","PSP","SAN"]
         MST = ["SJD"]
@@ -340,26 +333,22 @@ class Virgin:
         else:
             newtime = Virgin.timeChangerHelper(time,-500)
         return newtime
-    @staticmethod
     def timeChangerHelper(time, val):
         newtime = time + val
         if newtime < 0:
             newtime = 2400 + newtime
         return newtime
-    @staticmethod
     def summer(lists):
         sum = 0
         for x in lists:
             sum+= Virgin.timeGet(x[10])
         return sum
-    @staticmethod
     def locker(collin_legs, locked):
         i = 0
         while i<len(locked):
             collin_legs[i].insert(1,locked[i])
             i+=1
         return collin_legs
-    @staticmethod
     def combiner(prg_file="january.prg.txt", aosp_file="JanuaryAOSPgs0002.rpt"):
         collin_legs = Virgin.aospreader(aosp_file)
         #file=open("january.prg.txt",'r')
@@ -370,7 +359,6 @@ class Virgin:
         collin = Virgin.locker(collin_legs,jancok[1])
         file.close()
         return collin, kenzie
-    @staticmethod
     def astrixAdder(pairings): #Adds the astrix to kenzie's code
         # takes in a tuple with collin's pairings in 0 and kenzie's in 1
         new_pairings = []
@@ -396,13 +384,11 @@ class Virgin:
                 # print(y)
                 pass
         return kenzie
-    @staticmethod
     def csvWriter(pairings, output_file="january.prg.csv"):
-        new_csv = open(output_file,'w')
+        new_csv = open(output_file,'w',newline = "")
         csvwriter = csv.writer(new_csv)
         csvwriter.writerows(pairings)
         new_csv.close()
-    @staticmethod
     def swapper(pairings):
         pass
         #code

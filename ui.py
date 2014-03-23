@@ -92,7 +92,7 @@ class Application(Application_ui):
         Virgin.swapper(pairings)
         choose = askquestion("Crew Paring Data Converter", "Conversion Finished!\n Do you want to continue another conversion?")
         if choose == "no":
-            sys.exit()
+            self.top.destroy()
         
 
     def Command3_Cmd(self, event=None):
@@ -115,7 +115,6 @@ class Application(Application_ui):
 if __name__ == "__main__":
     top = Tk()
 
-
     im = PhotoImage(file='logo.gif')
     
     #canvas = Canvas(top)
@@ -125,6 +124,6 @@ if __name__ == "__main__":
     pic = Label(top, image=im, anchor='center')
     pic.place(relx=0., rely=0., relwidth=1., relheight=0.179)
     
-    
     Application(top).mainloop()
+    
     print("Bye")
