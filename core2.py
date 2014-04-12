@@ -402,6 +402,11 @@ class Virgin:
         csvwriter = csv.writer(new_csv)
         csvwriter.writerows(pairings)
         new_csv.close()
+
+        s = open(output_file).read()
+        s = s.replace("\r", "")
+        open(output_file,'w').write(s)
+
     @staticmethod
     def swapper(pairings):
         pass

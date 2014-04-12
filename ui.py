@@ -14,6 +14,7 @@ except ImportError:  #Python 2.x
     import tkFileDialog
     #import tkSimpleDialog
     from ImageTk import PhotoImage
+    from core2 import Virgin
 else:  #Python 3.x
     PythonVersion = 3
     from tkinter.font import Font
@@ -21,8 +22,7 @@ else:  #Python 3.x
     import tkinter.filedialog as tkFileDialog
     #import tkinter.simpledialog as tkSimpleDialog    #askstring()
     from tkinter import PhotoImage
-
-from core import Virgin
+    from core import Virgin
 
 class Application_ui(Frame):
     #这个类仅实现界面生成功能，具体事件处理代码在子类Application中。
@@ -90,6 +90,7 @@ class Application(Application_ui):
             print(x)
         print("done")
         Virgin.swapper(pairings)
+        
         choose = askquestion("Crew Paring Data Converter", "Conversion Finished!\n Do you want to continue another conversion?")
         if choose == "no":
             self.top.destroy()
